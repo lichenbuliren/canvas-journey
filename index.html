@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas-journey</title>
+<style>
+    .my-canvas{border: 2px solid #aaa;margin: 0 auto;display: block;}
+</style>
+<script>
+    window.onload = function(){
+        var canvas = document.getElementById('my-canvas');
+        if(!canvas.getContext){
+            alert('当前浏览器不支持canvas');
+            return false;
+        }
+
+        var context = canvas.getContext('2d');
+        context.beginPath();
+        context.moveTo(100,100);
+        context.lineTo(700,700);
+        context.lineTo(100,700);
+        context.lineTo(100,100);
+        context.lineWidth = 2;
+        // context.fillStyle='rgb(2,100,30)';
+        // context.fill();
+        context.strokeStyle = 'red';
+        context.stroke();
+        context.closePath();
+
+        context.beginPath()
+        context.moveTo(200,100);
+        context.lineTo(800,700);
+        context.strokeStyle = 'black';
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.strokeStyle = '#005588';
+        context.lineWidth = 5;
+        // 1.context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+        // x,y是圆的中心坐标 r:圆的半径 sAngle：起始弧度 eAngle：结束弧度 counterclockwise:true(逆时针),false(顺时针)默认false
+        // 2. 0.5pi是-90度（0pi，0.5pi，1pi，1.5pi ，这是固定的四个点位置（顺时针：0，90,180,270），跟距离长短无关，所以不管是顺时针还是逆时针，这几个数的位置是不变的。）
+        for(var i=0;i<10;i++){
+
+        }
+        context.arc(600,300,100,0,0.5*Math.PI,true);
+        context.stroke();
+        context.closePath();
+    }
+</script>
+</head>
+<body>
+    <canvas id="my-canvas" class="my-canvas" width="1200" height="800">
+        当前浏览器不支持canvas。
+    </canvas>
+</body>
+</html>
